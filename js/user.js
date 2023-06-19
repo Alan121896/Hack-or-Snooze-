@@ -137,6 +137,7 @@ function updateUIOnUserLogin() {
 
   putStoriesOnPage();
   $allStoriesList.show();
+  $errorSection.hide()
 
   updateNavOnLogin();
   generateUserProfile();

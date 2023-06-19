@@ -21,6 +21,7 @@ const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 const $navSubmitStory = $("#nav-submit-story");
+const $errorSection = $("#error-section")
 
 const $userProfile = $("#user-profile");
 
