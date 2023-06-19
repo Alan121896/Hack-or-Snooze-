@@ -159,6 +159,9 @@ async function toggleStoryFavorite(evt){
 }
 $storiesLists.on("click", ".star", toggleStoryFavorite)
 
+
+//handles infinite scroll - stories keep loading as you scroll down the page
+
 $(window).scroll(handleScroll);
 
 function handleScroll(){

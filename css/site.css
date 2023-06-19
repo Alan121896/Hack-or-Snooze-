@@ -107,6 +107,14 @@ form > hr {
   width: 70px;
 }
 
+#error-section{
+  
+  color: red;
+  background-color: #f6f6ef;
+  display: flex;
+  justify-content: center;
+}
+
 
 /* responsive queries for tightening things up for mobile. */
 

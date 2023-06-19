@@ -19,12 +19,21 @@ async function login(evt) {
 
   // User.login retrieves user info from API and returns User instance
   // which we'll make the globally-available, logged-in user.
-  currentUser = await User.login(username, password);
 
-  $loginForm.trigger("reset");
+  //edited User code to handle potential error messaging 
 
-  saveUserCredentialsInLocalStorage();
-  updateUIOnUserLogin();
+  try {
+
+    currentUser = await User.login(username, password);
+
+    $loginForm.trigger("reset");
+
+    saveUserCredentialsInLocalStorage();
+    updateUIOnUserLogin();
+  } catch(error){
+    console.error('Login Failed', error);
+    displayErrorMessage('Invalid login credentials!')
+  }
 }
 
 $loginForm.on("submit", login);
@@ -41,15 +50,31 @@ async function signup(evt) {
 
   // User.signup retrieves user info from API and returns User instance
   // which we'll make the globally-available, logged-in user.
-  currentUser = await User.signup(username, password, name);
 
-  saveUserCredentialsInLocalStorage();
-  updateUIOnUserLogin();
+  //edited User code to handle potential error messaging 
 
-  $signupForm.trigger("reset");
+  try {
+    currentUser = await User.signup(username, password, name);
+
+    saveUserCredentialsInLocalStorage();
+    updateUIOnUserLogin();
+
+    $signupForm.trigger("reset");
+  } catch (error) {
+    console.error('Signup failed', error);
+    displayErrorMessage('Username already taken');
+  }
 }
 
 $signupForm.on("submit", signup);
+
+// added displayErrorMessage function for error handling
+
+function displayErrorMessage(message){
+  const errorMessage = $("#error-section");
+  errorMessage.text(message);
+  errorMessage.removeClass("hidden");
+}
 
 /** Handle click of logout button
  *

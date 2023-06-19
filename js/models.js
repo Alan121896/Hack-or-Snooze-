@@ -191,6 +191,7 @@ class User {
    */
 
   static async login(username, password) {
+
     const response = await axios({
       url: `${BASE_URL}/login`,
       method: "POST",
@@ -199,16 +200,16 @@ class User {
 
     let { user } = response.data;
 
-    return new User(
-      {
+      return new User(
+        {
         username: user.username,
         name: user.name,
         createdAt: user.createdAt,
         favorites: user.favorites,
         ownStories: user.stories
-      },
-      response.data.token
-    );
+        },
+        response.data.token
+      );
   }
 
   /** When we already have credentials (token & username) for a user,
