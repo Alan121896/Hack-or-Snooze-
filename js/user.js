@@ -151,3 +151,57 @@ function generateUserProfile(){
   $("#profile-username").text(currentUser.username);
   $("#profile-account-date").text(currentUser.createdAt.slice(0, 10));
 }
+
+//edit user profile info if wanting to change username and password
+
+function editProfile(){
+  $(".profile-info").hide()
+  $("#edit-profile").show()
+  $(".profile-button").html("Save")
+}
+
+function saveProfileEdit(){
+  //  implement save
+  $(".profile-info").show()
+  $("#edit-profile").hide()
+  $(".profile-button").html("Edit Profile")
+
+  
+  // location.reload()
+}
+// unfinished updateProfile function -- need to get back to it later -- 
+
+// async function saveProfileEdit() {
+//   const newUsername = $("#edit-username").val();
+//   const newPassword = $("#edit-password").val();
+
+//   try {
+//     // Make an API call to update the user's profile with the new username and password
+//     await User.updateProfile(username, newUsername, newPassword);
+
+//     // Update the currentUser with the new username
+//     username = newUsername;
+
+//     // Update the UI with the new profile information
+//     generateUserProfile();
+    
+//     // Reset the form and hide the edit profile section
+//     // $("#edit-profile-form").trigger("reset");
+//     $(".profile-info").show();
+//     $("#edit-profile").hide();
+//     $(".profile-button").html("Edit Profile");
+
+//   } catch (error) {
+//     console.error('Failed to update profile', error);
+//     displayErrorMessage('Failed to update profile. Please try again.');
+//   }
+// }
+
+
+$(".profile-button").on("click", () => {
+  if($(".profile-button").html() == "Edit Profile"){
+    editProfile()
+  } else {
+    saveProfileEdit()
+  }
+})
